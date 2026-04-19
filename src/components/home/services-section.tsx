@@ -27,9 +27,13 @@ export function ServicesSection() {
                   <Image
                     src={s.image}
                     alt=""
-                    fill
+                    width={120}
+                    height={120}
                     className="object-contain"
                     sizes="120px"
+                    loading="lazy"
+                    decoding="async"
+                    quality={75}
                   />
                 </div>
                 <CardTitle className="text-center text-base sm:text-lg">{s.title}</CardTitle>

@@ -16,7 +16,10 @@ export function DoctorSection() {
                 alt="Dr. S. Dhanalakshmi"
                 fill
                 className="object-cover object-top"
-                sizes="220px"
+                sizes="(max-width: 1024px) 220px, 280px"
+                loading="lazy"
+                decoding="async"
+                quality={80}
               />
             </div>
             <div className="mt-4 text-center lg:text-left">

@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { heroSlides } from "@/lib/site";
+import { preloadImageUrls } from "@/lib/preload-images";
 import { cn } from "@/lib/utils";
 
 const INTERVAL_MS = 6500;
@@ -23,37 +24,42 @@ export function HeroCarousel() {
   );
 
   useEffect(() => {
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
     const t = window.setInterval(() => go(1), INTERVAL_MS);
     return () => window.clearInterval(t);
   }, [go]);
 
+  useEffect(() => {
+    const other = heroSlides.filter((_, i) => i !== 0).map((s) => s.image);
+    return preloadImageUrls(other);
+  }, []);
+
   const slide = heroSlides[index];
+  const isFirstSlide = index === 0;
 
   return (
     <section id="hero" className="relative min-h-[min(85vh,720px)] overflow-hidden">
-      {heroSlides.map((s, i) => (
+      <div className="absolute inset-0">
+        <Image
+          key={slide.id}
+          src={slide.image}
+          alt=""
+          fill
+          priority={isFirstSlide}
+          fetchPriority={isFirstSlide ? "high" : "low"}
+          sizes="100vw"
+          quality={80}
+          className="object-cover"
+        />
         <div
-          key={s.id}
-          className={cn(
-            "absolute inset-0 transition-opacity duration-700",
-            i === index ? "z-0 opacity-100" : "z-0 opacity-0 pointer-events-none"
-          )}
-          aria-hidden={i !== index}
-        >
-          <Image
-            src={s.image}
-            alt=""
-            fill
-            priority={i === 0}
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div
-            className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/20"
-            aria-hidden
-          />
-        </div>
-      ))}
+          className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/20"
+          aria-hidden
+        />
+      </div>
 
       <div className="relative z-10 mx-auto flex min-h-[min(85vh,720px)] max-w-6xl flex-col justify-center px-4 py-24 sm:px-6">
         <div className="max-w-xl rounded-2xl border border-border/40 bg-card/85 p-6 shadow-sm backdrop-blur-sm sm:p-8">
@@ -85,7 +91,7 @@ export function HeroCarousel() {
               type="button"
               onClick={() => setIndex(i)}
               className={cn(
-                "h-2 rounded-full transition-all",
+                "h-2 rounded-full transition-all motion-reduce:transition-none",
                 i === index ? "w-8 bg-primary" : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/70"
               )}
               aria-label={`Slide ${i + 1}`}

@@ -37,7 +37,9 @@ export function SiteHeader() {
             alt=""
             width={36}
             height={36}
+            sizes="36px"
             className="size-8 sm:size-9"
+            decoding="async"
           />
           <span className="hidden min-[380px]:inline">{siteConfig.name}</span>
           <span className="min-[380px]:hidden">{siteConfig.shortName}</span>
