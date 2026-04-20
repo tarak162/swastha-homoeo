@@ -19,7 +19,7 @@ export const mainNav: NavItem[] = [
   { label: "About", href: "/#about" },
   { label: "Services", href: "/#services" },
   { label: "Doctor", href: "/#doctor" },
-  { label: "Reviews", href: "/reviews" },
+  { label: "Healing Stories", href: "/healing-stories" },
   { label: "Contact", href: "/#contact" },
 ];
 
