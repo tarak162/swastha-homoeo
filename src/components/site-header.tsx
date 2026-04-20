@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -24,6 +25,7 @@ function isActive(pathname: string, href: string) {
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur-md">
@@ -61,10 +63,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <Button variant="outline" size="sm" asChild className="hidden sm:inline-flex">
-            <a href={`tel:${siteConfig.phoneTel}`}>Call</a>
+          <Button size="sm" asChild>
+            <Link href="/book">Book</Link>
           </Button>
-          <Sheet>
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" aria-label="Open menu">
                 <Menu className="size-5" />
@@ -79,6 +81,7 @@ export function SiteHeader() {
                   <Link
                     key={item.href}
                     href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
                     className={cn(
                       "rounded-md px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground",
                       isActive(pathname, item.href) && "bg-muted text-foreground"
@@ -88,13 +91,6 @@ export function SiteHeader() {
                   </Link>
                 ))}
               </nav>
-              <p className="mt-4 text-xs text-muted-foreground">{siteConfig.hours}</p>
-              <a
-                className="text-sm font-medium text-primary hover:underline"
-                href={`tel:${siteConfig.phoneTel}`}
-              >
-                {siteConfig.phone}
-              </a>
             </SheetContent>
           </Sheet>
         </div>
