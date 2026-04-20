@@ -42,7 +42,7 @@ export function HeroCarousel() {
   const isFirstSlide = index === 0;
 
   return (
-    <section id="hero" className="relative min-h-[min(85vh,720px)] overflow-hidden">
+    <section id="hero" className="relative h-[520px] overflow-hidden sm:h-[560px]">
       <div className="absolute inset-0">
         <Image
           key={slide.id}
@@ -61,23 +61,25 @@ export function HeroCarousel() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[min(85vh,720px)] max-w-6xl flex-col justify-center px-4 py-24 sm:px-6">
-        <div className="max-w-xl rounded-2xl border border-border/40 bg-card/85 p-6 shadow-sm backdrop-blur-sm sm:p-8">
+      <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-4 py-12 sm:px-6 sm:py-14">
+        <div className="flex h-[360px] max-w-2xl flex-col rounded-2xl border border-border/40 bg-card/85 p-6 shadow-sm backdrop-blur-sm sm:h-[390px] sm:max-w-3xl sm:p-8">
           <h1 className="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl">
             {slide.title}
           </h1>
-          {slide.bullets && slide.bullets.length > 0 ? (
-            <ul className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {slide.bullets.map((b) => (
-                <li key={b.label}>
-                  <span className="font-semibold text-foreground">{b.label}:</span> {b.text}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">{slide.body}</p>
-          )}
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+          <div className="mt-4 flex-1">
+            {slide.bullets && slide.bullets.length > 0 ? (
+              <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {slide.bullets.map((b) => (
+                  <li key={b.label}>
+                    <span className="font-semibold text-foreground">{b.label}:</span> {b.text}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">{slide.body}</p>
+            )}
+          </div>
+          <div className="mt-5 flex flex-wrap items-center gap-3">
             <Button asChild size="lg">
               <Link href={slide.cta.href}>{slide.cta.label}</Link>
             </Button>
