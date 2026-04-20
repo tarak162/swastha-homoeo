@@ -100,7 +100,7 @@ export function SiteHeader() {
         </div>
 
         <Button variant="default" size="sm" asChild className="hidden lg:inline-flex">
-          <a href={`tel:${siteConfig.phoneTel}`}>{siteConfig.phone}</a>
+          <a href="/book">Book an Appointment</a>
         </Button>
       </div>
     </header>
