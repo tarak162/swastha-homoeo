@@ -20,6 +20,7 @@ export const mainNav: NavItem[] = [
   { label: "Services", href: "/#services" },
   { label: "Doctor", href: "/#doctor" },
   { label: "Healing Stories", href: "/healing-stories" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/#contact" },
 ];
 

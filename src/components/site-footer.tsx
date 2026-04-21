@@ -7,6 +7,7 @@ const footerLinks = [
   { label: "About", href: "/#about" },
   { label: "Services", href: "/#services" },
   { label: "Healing Stories", href: "/healing-stories" },
+  { label: "FAQ", href: "/faq" },
   { label: "Book", href: "/book" },
 ];
 
