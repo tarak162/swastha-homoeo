@@ -21,9 +21,12 @@ export function ServicesSection() {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <Card key={s.title} className="overflow-hidden border-border/60 shadow-sm">
+            <Card
+              key={s.title}
+              className="group overflow-hidden border-border/60 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/30 hover:-translate-y-1"
+            >
               <CardHeader className="pb-2">
-                <div className="relative mx-auto size-[120px]">
+                <div className="relative mx-auto size-[120px] transition-transform duration-300 group-hover:scale-110">
                   <Image
                     src={s.image}
                     alt=""
@@ -36,10 +39,12 @@ export function ServicesSection() {
                     quality={75}
                   />
                 </div>
-                <CardTitle className="text-center text-base sm:text-lg">{s.title}</CardTitle>
+                <CardTitle className="text-center text-base sm:text-lg transition-colors duration-300 group-hover:text-primary">
+                  {s.title}
+                </CardTitle>
               </CardHeader>
               <CardContent className="pt-0">
-                <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground">
+                <ul className="list-inside list-disc space-y-1 text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
                   {s.lines.map((line) => (
                     <li key={line}>{line}</li>
                   ))}
