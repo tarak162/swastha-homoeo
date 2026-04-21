@@ -134,18 +134,25 @@ export type HeroSlide = {
   id: string;
   image: string;
   title: string;
+  subtitle?: string;
   body: string;
   bullets?: { label: string; text: string }[];
   cta: { label: string; href: string };
+  ctas?: { label: string; href: string }[];
 };
 
 export const heroSlides: HeroSlide[] = [
   {
     id: "welcome",
     image: "/swastha/slide/homeo-bg-1.jpeg",
-    title: "Welcome to Swastha Homoeopathy",
-    body: `Swastha Homoeopathy is a premier homeopathy clinic dedicated to providing holistic and natural healthcare solutions to our patients. Located in Hyderabad, we specialize in offering personalized homeopathic treatments that address a wide range of health conditions and promote overall well-being. With an experienced and compassionate homeopathic practitioner, we are committed to helping our patients achieve optimal health through safe, gentle, and effective homeopathic remedies.`,
-    cta: { label: "Read more", href: "/#about" },
+    title: "Natural Healing. Lasting Results.",
+    subtitle: "Personalised homeopathic care for you and your family — online or in-clinic",
+    body: "",
+    ctas: [
+      { label: "Book Appointment", href: "/book" },
+      { label: "Learn More", href: "/#about" },
+    ],
+    cta: { label: "Book Appointment", href: "/book" },
   },
   {
     id: "why",
@@ -154,23 +161,19 @@ export const heroSlides: HeroSlide[] = [
     bullets: [
       {
         label: "Expertise",
-        text: "SWASTHA has experienced practitioners with a deep understanding of this holistic form of medicine.",
+        text: "Experienced practitioners with deep understanding of holistic medicine.",
       },
       {
         label: "Personalization",
-        text: "We treat each patient as an individual; your plan reflects physical, emotional, and mental well-being.",
+        text: "Tailored treatment reflecting your physical, emotional, and mental needs.",
       },
       {
         label: "Holistic healing",
-        text: "We focus on root causes and your body's innate healing.",
-      },
-      {
-        label: "Outcomes & trust",
-        text: "Many patients have seen improvement through our care; we value long-term relationships built on trust.",
+        text: "We focus on root causes and your body's innate healing capacity.",
       },
     ],
     body: "",
-    cta: { label: "Our services", href: "/#services" },
+    cta: { label: "Services", href: "/#services" },
   },
   {
     id: "about-homeo",

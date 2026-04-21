@@ -42,7 +42,7 @@ export function HeroCarousel() {
   const isFirstSlide = index === 0;
 
   return (
-    <section id="hero" className="relative h-[520px] overflow-hidden sm:h-[560px]">
+    <section id="hero" className="relative h-[400px] overflow-hidden sm:h-[450px]">
       <div className="absolute inset-0">
         <Image
           key={slide.id}
@@ -61,11 +61,16 @@ export function HeroCarousel() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-4 py-12 sm:px-6 sm:py-14">
-        <div className="flex h-[360px] max-w-2xl flex-col rounded-2xl border border-border/40 bg-card/85 p-6 shadow-sm backdrop-blur-sm sm:h-[390px] sm:max-w-3xl sm:p-8">
+      <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-4 py-10 sm:px-6 sm:py-12">
+        <div className="flex h-[280px] max-w-2xl flex-col rounded-2xl border border-border/40 bg-card/85 p-6 shadow-sm backdrop-blur-sm sm:h-[310px] sm:max-w-3xl sm:p-8">
           <h1 className="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl">
             {slide.title}
           </h1>
+          {slide.subtitle && (
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base md:text-lg">
+              {slide.subtitle}
+            </p>
+          )}
           <div className="mt-4 flex-1">
             {slide.bullets && slide.bullets.length > 0 ? (
               <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -80,13 +85,21 @@ export function HeroCarousel() {
             )}
           </div>
           <div className="mt-5 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg">
-              <Link href={slide.cta.href}>{slide.cta.label}</Link>
-            </Button>
+            {slide.ctas ? (
+              slide.ctas.map((button) => (
+                <Button key={button.href} asChild size="lg" variant={button.label === "Learn More" ? "outline" : "default"}>
+                  <Link href={button.href}>{button.label}</Link>
+                </Button>
+              ))
+            ) : (
+              <Button asChild size="lg">
+                <Link href={slide.cta.href}>{slide.cta.label}</Link>
+              </Button>
+            )}
           </div>
         </div>
 
-        <div className="mt-8 flex items-center gap-2">
+        <div className="mt-6 flex items-center gap-2">
           {heroSlides.map((s, i) => (
             <button
               key={s.id}
