@@ -41,7 +41,7 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <div className="mt-14">
+        <div className="mt-14 pt-6">
           <div className="relative grid gap-8 md:grid-cols-3">
             {/* Connecting lines on desktop */}
             <div className="absolute top-20 left-0 right-0 hidden h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent md:block" />
@@ -50,20 +50,20 @@ export function HowItWorks() {
               const Icon = step.icon;
               return (
                 <div key={step.number} className="relative flex flex-col items-center">
+                  {/* Number Badge */}
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center size-10 rounded-full bg-primary text-primary-foreground font-bold text-lg">
+                    {step.number}
+                  </div>
+
                   {/* Arrow/Connector for mobile */}
                   {index < steps.length - 1 && (
-                    <div className="flex md:hidden my-2">
+                    <div className="flex md:hidden my-2 mt-6">
                       <ArrowRight className="size-5 text-primary/50 rotate-90" />
                     </div>
                   )}
 
                   {/* Step Card */}
-                  <Card className="w-full relative">
-                    {/* Number Badge */}
-                    <div className="absolute -top-5 left-1/2 -translate-x-1/2 flex items-center justify-center size-10 rounded-full bg-primary text-primary-foreground font-bold text-lg">
-                      {step.number}
-                    </div>
-
+                  <Card className="w-full relative mt-2">
                     <div className="pt-8 px-6 pb-6 text-center">
                       <Icon className="mx-auto size-10 text-primary mb-4" />
                       <h3 className="font-heading text-lg font-semibold text-foreground">
