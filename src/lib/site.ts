@@ -16,12 +16,12 @@ export type NavItem = { label: string; href: string };
 
 export const mainNav: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" },
-  { label: "Doctor", href: "/#doctor" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Doctor", href: "/doctor" },
   { label: "Healing Stories", href: "/healing-stories" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export type ServiceItem = {
@@ -151,7 +151,7 @@ export const heroSlides: HeroSlide[] = [
     body: "",
     ctas: [
       { label: "Book Appointment", href: "/book" },
-      { label: "Learn More", href: "/#about" },
+      { label: "Learn More", href: "/about" },
     ],
     cta: { label: "Book Appointment", href: "/book" },
   },
@@ -174,13 +174,13 @@ export const heroSlides: HeroSlide[] = [
       },
     ],
     body: "",
-    cta: { label: "Services", href: "/#services" },
+    cta: { label: "Services", href: "/services" },
   },
   {
     id: "about-homeo",
     image: "/swastha/slide/homeo-bg-3.jpeg",
     title: "About homoeopathy",
     body: `Homeopathy has a legacy dating back to the late 18th century when it was founded by Samuel Hahnemann. His work, "Organon of the Medical Art," laid the foundation for this holistic approach to healthcare. Over the years, homeopathy spread across Europe, North America, and other regions. People choose homeopathy for its holistic approach, individualized treatments, and emphasis on treating the whole person.`,
-    cta: { label: "About us", href: "/#about" },
+    cta: { label: "About us", href: "/about" },
   },
 ];

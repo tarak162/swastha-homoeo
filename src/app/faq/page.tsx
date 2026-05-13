@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/accordion";
 
 export const metadata = {
-    title: "FAQ",
-    description: "Frequently asked questions about Swastha Homoeopathy.",
+    title: "FAQs | Swastha Homoeopathy Hyderabad",
+    description:
+        "Answers to common questions about online homeopathy consultation, appointments, and care at Swastha Homoeopathy Hyderabad.",
 };
 
 const faqs = [
@@ -95,7 +96,7 @@ export default function FAQPage() {
                         <Link href="/book">Book a Consultation</Link>
                     </Button>
                     <Button asChild size="lg" variant="outline">
-                        <Link href="/#contact">Contact Us</Link>
+                        <Link href="/contact">Contact Us</Link>
                     </Button>
                 </div>
             </div>

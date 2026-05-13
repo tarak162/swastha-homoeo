@@ -5,8 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { testimonials } from "@/lib/testimonials";
 
 export const metadata = {
-  title: "Healing Stories",
-  description: "Patient testimonials and healing stories from Swastha Homoeopathy clinic.",
+  title: "Healing Stories | Swastha Homoeopathy Hyderabad",
+  description:
+    "Read patient testimonials and healing stories from Swastha Homoeopathy’s online homeopathy clinic in Hyderabad.",
 };
 
 export default function HealingStoriesPage() {

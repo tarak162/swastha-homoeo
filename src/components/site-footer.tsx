@@ -4,11 +4,13 @@ import { siteConfig } from "@/lib/site";
 
 const footerLinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Doctor", href: "/doctor" },
   { label: "Healing Stories", href: "/healing-stories" },
   { label: "FAQ", href: "/faq" },
   { label: "Book", href: "/book" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function SiteFooter() {
