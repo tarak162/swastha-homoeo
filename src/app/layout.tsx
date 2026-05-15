@@ -20,7 +20,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Swastha Homoeopathy | Natural Healing in Hyderabad",
+  metadataBase: new URL(
+    "https://swasthahomoeo.vercel.app"
+  ),
+  title: {
+    default: "Swastha Homoeopathy | Natural Healing in Hyderabad",
+    template: "%s | Swastha Homoeopathy"
+  },
+  applicationName: "Swastha Homoeopathy",
+  publisher: "Swastha Homoeopathy",
+  icons: {
+    icon: [
+      { url: "/icon.png", 
+        type: "image/png", 
+        sizes: "512x512" },
+      { url: "/favicon.ico", 
+        sizes: "any" }
+    ],
+    apple: [
+      { url: "/apple-icon.png", 
+        sizes: "180x180", 
+        type: "image/png" }
+    ],
+    shortcut: "/favicon.ico"
+  },
   description:
     "Book online homoeopathy consultations with Dr. S. Dhanalakshmi, M.D. Personalised treatment for skin, digestion, respiratory and chronic conditions. BHEL, Hyderabad.",
   keywords: [
@@ -98,6 +121,18 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Swastha Homoeopathy",
+              "alternateName": "Swastha Homeopathy",
+              "url": "https://swasthahomoeo.vercel.app"
+            })
+          }}
         />
         <WhatsAppButton />
       </body>
