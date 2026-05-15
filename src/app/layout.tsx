@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "https://swasthahomoeo.vercel.app"
   ),
   title: {
-    default: "Swastha Homoeopathy | Natural Healing in Hyderabad",
+    default: "Swastha Homoeopathy | Natural Healing",
     template: "%s | Swastha Homoeopathy"
   },
   applicationName: "Swastha Homoeopathy",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     "homoeopathy clinic bhel hyderabad",
   ],
   openGraph: {
-    title: "Swastha Homoeopathy | Natural Healing in Hyderabad",
+    title: "Swastha Homoeopathy | Natural Healing",
     description:
       "Personalised homoeopathic care with Dr. S. Dhanalakshmi, M.D. Book online via Google Meet.",
     url: "https://swasthahomoeo.vercel.app",
