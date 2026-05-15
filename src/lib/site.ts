@@ -145,10 +145,11 @@ export type HeroSlide = {
 export const heroSlides: HeroSlide[] = [
   {
     id: "welcome",
-    image: "/swastha/slide/homeo-bg-1.jpeg",
+    image: "/swastha/slide/homeo-bg-2.jpeg",
     title: "Natural Healing. Lasting Results.",
-    subtitle: "Personalised homeopathic care for you and your family — online or in-clinic",
-    body: "",
+    subtitle:
+      "Experience the gentle power of homoeopathy — personalised remedies crafted for your unique constitution, treating the root cause, not just the symptoms.",
+    body: "Available online via Google Meet and in-clinic.",
     ctas: [
       { label: "Book Appointment", href: "/book" },
       { label: "Learn More", href: "/about" },
@@ -157,7 +158,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     id: "why",
-    image: "/swastha/slide/homeo-bg-2.jpeg",
+    image: "/swastha/slide/homeo-bg-1.jpeg",
     title: "Why Swastha?",
     bullets: [
       {
