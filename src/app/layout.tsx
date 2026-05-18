@@ -24,8 +24,9 @@ export const metadata: Metadata = {
     "https://swasthahomoeo.vercel.app"
   ),
   title: {
-    default: "Swastha Homoeopathy | Natural Healing",
-    template: "%s | Swastha Homoeopathy"
+    default:
+      "Swastha Homoeopathy | Swastha Homoeo | Natural Healing",
+    template: "%s | Swastha Homoeo"
   },
   applicationName: "Swastha Homoeopathy",
   publisher: "Swastha Homoeopathy",
@@ -48,14 +49,26 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico"
   },
   description:
-    "Book online homoeopathy consultations with Dr. S. Dhanalakshmi, M.D. Personalised treatment for skin, digestion, respiratory and chronic conditions. BHEL, Hyderabad.",
+    "Swastha Homoeo — Book online homoeopathy and homeopathy consultations in Hyderabad with Dr. S. Dhanalakshmi, M.D. Personalised homoeo treatment for skin, digestion, respiratory and chronic conditions. BHEL, Hyderabad.",
   keywords: [
-    "homoeopathy hyderabad",
-    "online homoeopathy consultation",
+    "swastha homoeo",
+    "swastha homeo",
     "swastha homoeopathy",
+    "swastha homeopathy",
+    "swastha homoeo hyderabad",
+    "swastha homeopathy hyderabad",
+    "homoeopathy hyderabad",
+    "homeopathy hyderabad",
+    "online homoeopathy consultation hyderabad",
+    "online homeopathy consultation hyderabad",
+    "homoeo clinic bhel hyderabad",
+    "homeo doctor bhel hyderabad",
+    "best homoeo doctor hyderabad",
     "Dr Dhanalakshmi homoeopathy",
-    "best homoeopathy doctor hyderabad",
-    "homoeopathy clinic bhel hyderabad",
+    "Dr Dhanalakshmi homeopathy",
+    "homoeopathy clinic bhel",
+    "natural healing hyderabad",
+    "holistic clinic hyderabad",
   ],
   openGraph: {
     title: "Swastha Homoeopathy | Natural Healing",
@@ -89,15 +102,22 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     name: "Swastha Homoeopathy",
+    alternateName: [
+      "Swastha Homoeo",
+      "Swastha Homeo",
+      "Swastha Homeopathy",
+      "Swastha Homoeopathy Clinic"
+    ],
     description:
-      "Homoeopathy clinic offering personalised online consultations",
+      "Swastha Homoeo offers personalised homoeopathic and homeopathic treatments online and in-clinic at BHEL Hyderabad.",
     url: "https://swasthahomoeo.vercel.app",
     telephone: "+918328171337",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "BHEL",
+      streetAddress: "2189, Old MIG, BHEL",
       addressLocality: "Hyderabad",
       addressRegion: "Telangana",
+      postalCode: "500032",
       addressCountry: "IN",
     },
     geo: {
@@ -105,9 +125,9 @@ export default function RootLayout({
       latitude: "17.4830569",
       longitude: "78.3068972",
     },
-    openingHours: "Mo-Sa 09:00-19:00",
+    openingHours: "Mo-Sa 10:30-13:00, Mo-Sa 17:00-20:00",
     priceRange: "₹₹",
-    medicalSpecialty: "Homoeopathy",
+    medicalSpecialty: "Homeopathic",
   };
 
   return (
