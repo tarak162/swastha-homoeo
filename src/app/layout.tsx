@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    "https://swasthahomoeo.vercel.app"
+    "https://www.swasthahomoeo.com"
   ),
   title: {
     default:
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     title: "Swastha Homoeopathy | Natural Healing",
     description:
       "Personalised homoeopathic care with Dr. S. Dhanalakshmi, M.D. Book online via Google Meet.",
-    url: "https://swasthahomoeo.vercel.app",
+    url: "https://www.swasthahomoeo.com",
     siteName: "Swastha Homoeopathy",
     locale: "en_IN",
     type: "website",
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://swasthahomoeo.vercel.app",
+    canonical: "https://www.swasthahomoeo.com",
   },
 };
 
@@ -110,7 +110,7 @@ export default function RootLayout({
     ],
     description:
       "Swastha Homoeo offers personalised homoeopathic and homeopathic treatments online and in-clinic at BHEL Hyderabad.",
-    url: "https://swasthahomoeo.vercel.app",
+    url: "https://www.swasthahomoeo.com",
     telephone: "+918328171337",
     address: {
       "@type": "PostalAddress",
@@ -153,7 +153,7 @@ export default function RootLayout({
               "@type": "WebSite",
               "name": "Swastha Homoeopathy",
               "alternateName": "Swastha Homeopathy",
-              "url": "https://swasthahomoeo.vercel.app"
+              "url": "https://www.swasthahomoeo.com"
             })
           }}
         />
