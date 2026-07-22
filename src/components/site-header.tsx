@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -26,6 +26,23 @@ function isActive(pathname: string, href: string) {
 export function SiteHeader() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showBlogs, setShowBlogs] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("preview") === "true" || params.get("showBlogs") === "true") {
+        setShowBlogs(true);
+        sessionStorage.setItem("swastha_preview_blogs", "true");
+      } else if (sessionStorage.getItem("swastha_preview_blogs") === "true") {
+        setShowBlogs(true);
+      }
+    }
+  }, [pathname]); // Check on every pathname change in case they clicked a preview link later
+
+  const visibleNav = mainNav.filter(
+    (item) => item.href !== "/blogs" || showBlogs
+  );
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur-md">
@@ -48,7 +65,7 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
-          {mainNav.map((item) => (
+          {visibleNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -77,7 +94,7 @@ export function SiteHeader() {
                 <SheetTitle className="text-left">Menu</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-1 pt-2" aria-label="Mobile main">
-                {mainNav.map((item) => (
+                {visibleNav.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
