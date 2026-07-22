@@ -117,11 +117,20 @@ function CalEmbed({ calLink }: { calLink: string }) {
 
 export default function BookPageClient() {
   const [selectedType, setSelectedType] = useState<BookingType["id"] | null>(null);
+  const calendarSectionRef = useRef<HTMLDivElement>(null);
 
   const selectedBooking = useMemo(
     () => bookingTypes.find((item) => item.id === selectedType) ?? null,
     [selectedType]
   );
+
+  useEffect(() => {
+    if (selectedType) {
+      requestAnimationFrame(() => {
+        calendarSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      });
+    }
+  }, [selectedType]);
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
@@ -172,7 +181,7 @@ export default function BookPageClient() {
         })}
       </section>
 
-      <section className="mt-8">
+      <section ref={calendarSectionRef} className="mt-8 scroll-mt-20">
         {!selectedBooking ? (
           <div className="flex items-center gap-2 rounded-xl border border-dashed border-border/70 bg-muted/30 px-4 py-3 text-sm text-muted-foreground">
             <AlertCircle className="size-4 shrink-0" aria-hidden />
