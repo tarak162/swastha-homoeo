@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -80,6 +81,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
           <Button size="sm" asChild>
             <Link href="/book">Book</Link>
           </Button>
@@ -112,9 +114,12 @@ export function SiteHeader() {
           </Sheet>
         </div>
 
-        <Button variant="default" size="sm" asChild className="hidden lg:inline-flex">
-          <a href="/book">Book an Appointment</a>
-        </Button>
+        <div className="hidden items-center gap-2 lg:flex">
+          <ThemeToggle />
+          <Button variant="default" size="sm" asChild>
+            <a href="/book">Book an Appointment</a>
+          </Button>
+        </div>
       </div>
     </header>
   );
