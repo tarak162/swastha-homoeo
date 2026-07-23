@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BLOG_POSTS } from "../data/posts";
+import ShareButtons from "../components/ShareButtons";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -155,6 +156,15 @@ export default async function BlogPostPage({ params }: PageProps) {
                   {post.readTime}
                 </span>
               </div>
+
+              {/* Quick compact share row in the header */}
+              <div className="ml-auto border-l border-border/60 pl-6">
+                <ShareButtons
+                  title={post.title}
+                  url={`https://www.swasthahomoeo.com/blogs/${post.slug}`}
+                  variant="compact"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -203,6 +213,18 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </p>
                 </div>
               </div>
+            </div>
+
+            {/* ── Share Bar ───────────────────────────────────────────── */}
+            <div className="rounded-xl border border-border/50 bg-card/60 p-4 sm:p-5">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Found this helpful? Share with a loved one.
+              </p>
+              <ShareButtons
+                title={post.title}
+                url={`https://www.swasthahomoeo.com/blogs/${post.slug}`}
+                variant="full"
+              />
             </div>
 
             {/* Related Articles Section */}
