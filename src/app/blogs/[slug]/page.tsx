@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { BLOG_POSTS } from "../data/posts";
 import ShareButtons from "../components/ShareButtons";
 
@@ -237,7 +237,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   {relatedPosts.map((related) => (
                     <Card
                       key={related.slug}
-                      className="group overflow-hidden border border-border/40 bg-card transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm"
+                      className="group relative overflow-hidden border border-border/40 bg-card transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm"
                     >
                       <div className="relative aspect-video w-full bg-muted">
                         <Image
@@ -253,18 +253,44 @@ export default async function BlogPostPage({ params }: PageProps) {
                           {related.category}
                         </span>
                         <h4 className="mt-2 font-heading text-base font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                          <Link href={`/blogs/${related.slug}`}>
+                          {/* Full-card overlay — entire card surface is the click target */}
+                          <Link
+                            href={`/blogs/${related.slug}`}
+                            className="after:absolute after:inset-0 after:z-0 focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-primary/60"
+                          >
                             {related.title}
                           </Link>
                         </h4>
-                        <div className="mt-4 flex items-center justify-between text-[10px] text-muted-foreground">
-                          <span>{related.date}</span>
-                          <Link
-                            href={`/blogs/${related.slug}`}
-                            className="font-bold text-primary hover:underline"
-                          >
-                            Read Article
-                          </Link>
+
+                        {/* Single unified footer row */}
+                        <div className="mt-4 flex items-center justify-between gap-3 border-t border-border/40 pt-3">
+                          {/* Author */}
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <div className="relative size-5 shrink-0 overflow-hidden rounded-full border border-border bg-muted">
+                              <Image
+                                src={related.author.avatar}
+                                alt={related.author.name}
+                                fill
+                                sizes="20px"
+                                className="object-cover"
+                              />
+                            </div>
+                            <span className="truncate text-[10px] font-medium text-foreground">
+                              {related.author.name}
+                            </span>
+                          </div>
+
+                          {/* Date · Read time */}
+                          <div className="flex shrink-0 items-center gap-2.5 text-[10px] text-muted-foreground">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="size-2.5" />
+                              {related.date}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Clock className="size-2.5" />
+                              {related.readTime}
+                            </span>
+                          </div>
                         </div>
                       </CardContent>
                     </Card>

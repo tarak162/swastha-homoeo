@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Calendar, Clock, Search, User, X } from "lucide-react";
+import { Calendar, Clock, Search, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -138,7 +138,7 @@ export default function BlogsPageClient({ initialPosts }: BlogsPageClientProps) 
           <div className="space-y-12">
             {/* Featured Article Banner */}
             {featuredPost && (
-              <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:shadow-lg">
+              <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:shadow-lg group/featured">
                 <div className="grid grid-cols-1 lg:grid-cols-12">
                   {/* Banner Cover Image (LCP Candidate) */}
                   <div className="relative aspect-[16/10] w-full lg:col-span-7 lg:aspect-auto lg:h-[400px]">
@@ -159,8 +159,12 @@ export default function BlogsPageClient({ initialPosts }: BlogsPageClientProps) 
                       <span className="inline-block rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold tracking-wide text-primary">
                         {featuredPost.category}
                       </span>
-                      <h2 className="font-heading text-2xl font-bold leading-snug text-foreground sm:text-3xl hover:text-primary transition-colors">
-                        <Link href={`/blogs/${featuredPost.slug}`}>
+                      <h2 className="font-heading text-2xl font-bold leading-snug text-foreground sm:text-3xl group-hover/featured:text-primary transition-colors">
+                        {/* Full-card overlay — makes the entire banner clickable */}
+                        <Link
+                          href={`/blogs/${featuredPost.slug}`}
+                          className="after:absolute after:inset-0 after:z-0 focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-primary/60"
+                        >
                           {featuredPost.title}
                         </Link>
                       </h2>
@@ -182,33 +186,25 @@ export default function BlogsPageClient({ initialPosts }: BlogsPageClientProps) 
                         </div>
                       </div>
 
-                      {/* Author & Button */}
-                      <div className="mt-4 flex items-center justify-between gap-4">
-                        <div className="flex items-center gap-2">
-                          <div className="relative size-8 overflow-hidden rounded-full border border-border bg-muted">
-                            <Image
-                              src={featuredPost.author.avatar}
-                              alt={featuredPost.author.name}
-                              fill
-                              sizes="32px"
-                              className="object-cover"
-                            />
-                          </div>
-                          <div>
-                            <p className="text-xs font-semibold text-foreground">
-                              {featuredPost.author.name}
-                            </p>
-                            <p className="text-[10px] text-muted-foreground">
-                              {featuredPost.author.role}
-                            </p>
-                          </div>
+                      {/* Author */}
+                      <div className="mt-4 flex items-center gap-2">
+                        <div className="relative size-8 overflow-hidden rounded-full border border-border bg-muted">
+                          <Image
+                            src={featuredPost.author.avatar}
+                            alt={featuredPost.author.name}
+                            fill
+                            sizes="32px"
+                            className="object-cover"
+                          />
                         </div>
-                        <Button asChild size="sm" className="font-semibold">
-                          <Link href={`/blogs/${featuredPost.slug}`} className="flex items-center gap-1">
-                            Read Article
-                            <ArrowRight className="size-3.5 transition-transform group-hover/button:translate-x-0.5" />
-                          </Link>
-                        </Button>
+                        <div>
+                          <p className="text-xs font-semibold text-foreground">
+                            {featuredPost.author.name}
+                          </p>
+                          <p className="text-[10px] text-muted-foreground">
+                            {featuredPost.author.role}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -226,7 +222,7 @@ export default function BlogsPageClient({ initialPosts }: BlogsPageClientProps) 
                   {gridPosts.map((post) => (
                     <Card
                       key={post.slug}
-                      className="group overflow-hidden border border-border/50 bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                      className="group relative overflow-hidden border border-border/50 bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                     >
                       {/* Card Cover Image */}
                       <div className="relative aspect-video w-full bg-muted">
@@ -248,7 +244,11 @@ export default function BlogsPageClient({ initialPosts }: BlogsPageClientProps) 
                       <CardContent className="flex flex-1 flex-col justify-between p-5">
                         <div className="space-y-2">
                           <h4 className="font-heading text-lg font-semibold leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                            <Link href={`/blogs/${post.slug}`}>
+                            {/* Full-card overlay link — entire card surface is now the click target */}
+                            <Link
+                              href={`/blogs/${post.slug}`}
+                              className="after:absolute after:inset-0 after:z-0 focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-primary/60"
+                            >
                               {post.title}
                             </Link>
                           </h4>
@@ -257,9 +257,26 @@ export default function BlogsPageClient({ initialPosts }: BlogsPageClientProps) 
                           </p>
                         </div>
 
-                        <div className="mt-5 pt-4 border-t border-border/40">
-                          {/* Card Meta details */}
-                          <div className="flex items-center justify-between gap-2 text-[11px] text-muted-foreground">
+                        {/* Single unified footer row */}
+                        <div className="mt-5 flex items-center justify-between gap-3 border-t border-border/40 pt-4">
+                          {/* Author */}
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <div className="relative size-6 shrink-0 overflow-hidden rounded-full border border-border bg-muted">
+                              <Image
+                                src={post.author.avatar}
+                                alt={post.author.name}
+                                fill
+                                sizes="24px"
+                                className="object-cover"
+                              />
+                            </div>
+                            <span className="truncate text-[11px] font-medium text-foreground">
+                              {post.author.name}
+                            </span>
+                          </div>
+
+                          {/* Date · Read time */}
+                          <div className="flex shrink-0 items-center gap-3 text-[11px] text-muted-foreground">
                             <span className="flex items-center gap-1">
                               <Calendar className="size-3" />
                               {post.date}
@@ -268,30 +285,6 @@ export default function BlogsPageClient({ initialPosts }: BlogsPageClientProps) 
                               <Clock className="size-3" />
                               {post.readTime}
                             </span>
-                          </div>
-
-                          {/* Card Author credit */}
-                          <div className="mt-4 flex items-center justify-between gap-4">
-                            <div className="flex items-center gap-1.5">
-                              <div className="relative size-6 overflow-hidden rounded-full border border-border bg-muted">
-                                <Image
-                                  src={post.author.avatar}
-                                  alt={post.author.name}
-                                  fill
-                                  sizes="24px"
-                                  className="object-cover"
-                                />
-                              </div>
-                              <span className="text-[11px] font-medium text-foreground">
-                                {post.author.name}
-                              </span>
-                            </div>
-                            <Link
-                              href={`/blogs/${post.slug}`}
-                              className="inline-flex items-center gap-0.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors"
-                            >
-                              Read <ArrowRight className="size-3" />
-                            </Link>
                           </div>
                         </div>
                       </CardContent>
