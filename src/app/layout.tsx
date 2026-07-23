@@ -20,36 +20,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    "https://www.swasthahomoeo.com"
-  ),
+  metadataBase: new URL("https://www.swasthahomoeo.com"),
+  alternates: {
+    canonical: "https://www.swasthahomoeo.com",
+  },
   title: {
-    default:
-      "Swastha Homoeopathy | Swastha Homoeo | Natural Healing",
-    template: "%s | Swastha Homoeo"
+    default: "Swastha Homoeopathy | Best Homoeopathic Clinic in Hyderabad",
+    template: "%s | Swastha Homoeopathy",
   },
   applicationName: "Swastha Homoeopathy",
   publisher: "Swastha Homoeopathy",
   icons: {
     icon: [
-      { url: "/favicon-16x16.png", 
-        sizes: "16x16", 
-        type: "image/png" },
-      { url: "/favicon-32x32.png", 
-        sizes: "32x32", 
-        type: "image/png" },
-      { url: "/favicon.ico", 
-        sizes: "any" }
+      {
+        url: "/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
     ],
     apple: {
       url: "/apple-touch-icon.png",
       sizes: "180x180",
-      type: "image/png"
+      type: "image/png",
     },
-    shortcut: "/favicon.ico"
+    shortcut: "/favicon.ico",
   },
   description:
-    "Swastha Homoeo — Book online homoeopathy and homeopathy consultations in Hyderabad with Dr. S. Dhanalakshmi, M.D. Personalised homoeo treatment for skin, digestion, respiratory and chronic conditions. BHEL, Hyderabad.",
+    "Swastha Homoeo — Top Homoeopathic Clinic in Hyderabad. Offering online & in-clinic consultations for chronic diseases, skin, respiratory & digestive care.",
   keywords: [
     "swastha homoeo",
     "swastha homeo",
@@ -61,19 +67,17 @@ export const metadata: Metadata = {
     "homeopathy hyderabad",
     "online homoeopathy consultation hyderabad",
     "online homeopathy consultation hyderabad",
-    "homoeo clinic bhel hyderabad",
-    "homeo doctor bhel hyderabad",
+    "homoeo clinic hyderabad",
+    "homeo doctor hyderabad",
     "best homoeo doctor hyderabad",
-    "Dr Dhanalakshmi homoeopathy",
-    "Dr Dhanalakshmi homeopathy",
-    "homoeopathy clinic bhel",
+    "homoeopathy clinic hyderabad",
     "natural healing hyderabad",
     "holistic clinic hyderabad",
   ],
   openGraph: {
-    title: "Swastha Homoeopathy | Natural Healing",
+    title: "Swastha Homoeopathy | Top Homoeopathic Clinic in Hyderabad",
     description:
-      "Personalised homoeopathic care with Dr. S. Dhanalakshmi, M.D. Book online via Google Meet.",
+      "Personalised homoeopathic care & online consultations in Hyderabad for chronic conditions.",
     url: "https://www.swasthahomoeo.com",
     siteName: "Swastha Homoeopathy",
     locale: "en_IN",
@@ -82,14 +86,11 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Swastha Homoeopathy Hyderabad",
-    description: "Online homoeopathy consultations with Dr. Dhanalakshmi",
+    description: "Online & in-clinic homoeopathy consultations in Hyderabad",
   },
   robots: {
     index: true,
     follow: true,
-  },
-  alternates: {
-    canonical: "https://www.swasthahomoeo.com",
   },
 };
 
@@ -106,10 +107,10 @@ export default function RootLayout({
       "Swastha Homoeo",
       "Swastha Homeo",
       "Swastha Homeopathy",
-      "Swastha Homoeopathy Clinic"
+      "Swastha Homoeopathy Clinic",
     ],
     description:
-      "Swastha Homoeo offers personalised homoeopathic and homeopathic treatments online and in-clinic at BHEL Hyderabad.",
+      "Swastha Homoeo offers personalised homoeopathic and homeopathic treatments online and in-clinic at Hyderabad.",
     url: "https://www.swasthahomoeo.com",
     telephone: "+918328171337",
     address: {
@@ -151,10 +152,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "Swastha Homoeopathy",
-              "alternateName": "Swastha Homeopathy",
-              "url": "https://www.swasthahomoeo.com"
-            })
+              name: "Swastha Homoeopathy",
+              alternateName: "Swastha Homeopathy",
+              url: "https://www.swasthahomoeo.com",
+            }),
           }}
         />
         <WhatsAppButton />
